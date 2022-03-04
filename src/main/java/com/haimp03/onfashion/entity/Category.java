@@ -14,11 +14,57 @@ import javax.persistence.Table;
 public class Category implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long category_id;
+    public Long category_id;
     
     @Column(length = 150, nullable = false)
-    private String name;
+    public String name;
 
     @Column(length = 255, nullable = true)
-    private String description;
+    public String description;
+    
+    
+
+
+    /**
+     * @return Long return the category_id
+     */
+    public Long getCategory_id() {
+        return category_id;
+    }
+
+    /**
+     * @param category_id the category_id to set
+     */
+    public void setCategory_id(Long category_id) {
+        this.category_id = category_id;
+    }
+
+    /**
+     * @return String return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return String return the description
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * @param description the description to set
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
 }
