@@ -1,0 +1,39 @@
+<div th:fragment="navbar">
+    <div class="slide-menu" id="bar">
+        <div class="close-menu" onclick="closeBar()">
+            <i class="fas fa-times"></i>
+        </div>
+        <ul>
+            <li><a href=""><i class="fas fa-shopping-bag"></i> Basket</a></li>
+            <li><a href=""><i class="fas fa-user"></i> User Config</a></li>
+            <li>
+                <div class="tambahan">
+                    <div class="search">
+                        <input type="text" placeholder="Search ...">
+                        <button class="btn-search"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <section class="bg-header">
+        <div class="container">
+            <a href="/"><img src="/frontend/images/logo.png" alt=""></a>
+            <nav>
+                <ul class="menu">
+                    <li>
+                        <div class="search">
+                            <input type="text" placeholder="Search ...">
+                            <button class="btn-search"><i class="fas fa-search"></i></button>
+                        </div>
+                    </li>
+                    <li><a href="" class="pipe"><i class="fas fa-shopping-bag"></i></a></li>
+                    <li><a href=""><i class="fas fa-user"></i></a></li>
+                </ul>
+                <ul class="menu-phone" onclick="openBar()">
+                    <li><i class="fas fa-bars"></i></li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+</div>

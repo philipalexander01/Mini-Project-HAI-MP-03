@@ -1,4 +1,4 @@
-package com.haimp03.onfashion.controllers;
+package com.haimp03.onfashion.controllers.backend;
 
 import java.util.Optional;
 

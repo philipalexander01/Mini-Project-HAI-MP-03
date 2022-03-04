@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>OnFasion</title>
+    <link rel="icon" href="/frontend/images/logo.png">
+    <!-- Online Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&family=Hind:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Local Styling -->
+    <link rel="stylesheet" href="/frontend/css/style.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css">
+    <script src="/webjars/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <!-- Fontawesome -->
+    <script src="https://kit.fontawesome.com/f0f2d9386c.js" crossorigin="anonymous"></script>
+    <!-- Local Js -->
+    <script>
+        function openBar(){
+            document.getElementById("bar").style.width = "100vw";
+        }
+
+        function closeBar(){
+            document.getElementById("bar").style.width = "0";
+        }
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <div th:replace="/frontend/fragments/navbar::navbar"></div>
+        <section class="bg-banner">
+            <div class="banner">
+                <img src="/frontend/images/banner.jpg" alt="" class="img-desktop">
+                <img src="/frontend/images/phoneBanner.jpg" alt="" class="img-phone">
+                <div class="text-banner">
+                    <h3>On <strong>Fashion</strong></h3>
+                    <h1>Solution to your fashion problem</h1>
+                    <p>
+                        OnFasion is an international fashion online shop with many branches spread across various countries in Asia to America such as Indonesia, Singapore, China, Russia, Arabic, Brazil, and Argentina.
+                    </p>
+                    <button class="btn-promo">See More ...</button>
+                </div>
+            </div>
+        </section>
+        <section class="bg-category">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="judul">
+                            <h3>On <strong>Category</strong></h3>
+                            <h1>Categories</h1>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                        <div class="kategori">
+                            <img src="/frontend/images/menCategory.jpg" alt="">
+                            <div class="text-kategori">
+                                <h4>Classic Fits & Colors</h4>
+                                <h1>Men Outfit</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                        <div class="kategori">
+                            <img src="/frontend/images/womenCategory.jpg" alt="">
+                            <div class="text-kategori">
+                                <h4>Luxury and Glamour</h4>
+                                <h1>Women Outfit</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                        <div class="kategori">
+                            <img src="/frontend/images/accessoryCategory.jpg" alt="">
+                            <div class="text-kategori">
+                                <h4>High Quality Materials</h4>
+                                <h1>Accessories</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="bg-mens">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="judul">
+                            <h3>On <strong>Outfit</strong></h3>
+                            <h1>Men & Women Outfit</h1>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <a href="/product/2">
+                            <div class="produk">
+                                <img src="/frontend/images/products/product1.jpg" alt="">
+                                <div class="text-produk">
+                                    <div class="tombol">
+                                        <i class="far fa-heart"></i>
+                                        <i class="fas fa-shopping-bag"></i>
+                                    </div>
+                                    <h3>$ 29.99</h3>
+                                    <h2>Classic Sweater</h2>
+                                    <div class="star">
+                                        <img src="/frontend/images/star.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <a href="/product/2">
+                            <div class="produk">
+                                <img src="/frontend/images/products/product2.jpg" alt="">
+                                <div class="text-produk">
+                                    <div class="tombol">
+                                        <i class="far fa-heart"></i>
+                                        <i class="fas fa-shopping-bag"></i>
+                                    </div>
+                                    <h3>$ 49.99</h3>
+                                    <h2>Parka Jacket</h2>
+                                    <div class="star">
+                                        <img src="/frontend/images/star.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <a href="/product/2">
+                            <div class="produk">
+                                <img src="/frontend/images/products/product3.jpg" alt="">
+                                <div class="text-produk">
+                                    <div class="tombol">
+                                        <i class="far fa-heart"></i>
+                                        <i class="fas fa-shopping-bag"></i>
+                                    </div>
+                                    <h3>$ 19.99</h3>
+                                    <h2>Basic Hoodie</h2>
+                                    <div class="star">
+                                        <img src="/frontend/images/star.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <a href="/product/2">
+                            <div class="produk">
+                                <img src="/frontend/images/products/product4.jpg" alt="">
+                                <div class="text-produk">
+                                    <div class="tombol">
+                                        <i class="far fa-heart"></i>
+                                        <i class="fas fa-shopping-bag"></i>
+                                    </div>
+                                    <h3>$ 35.99</h3>
+                                    <h2>Classic Pea Coat</h2>
+                                    <div class="star">
+                                        <img src="/frontend/images/star.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <a href="/product/2">
+                            <div class="produk">
+                                <img src="/frontend/images/products/product5.jpg" alt="">
+                                <div class="text-produk">
+                                    <div class="tombol">
+                                        <i class="far fa-heart"></i>
+                                        <i class="fas fa-shopping-bag"></i>
+                                    </div>
+                                    <h3>$ 15.99</h3>
+                                    <h2>Basic Sweater</h2>
+                                    <div class="star">
+                                        <img src="/frontend/images/star.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <a href="/product/2">
+                            <div class="produk">
+                                <img src="/frontend/images/products/product6.jpg" alt="">
+                                <div class="text-produk">
+                                    <div class="tombol">
+                                        <i class="far fa-heart"></i>
+                                        <i class="fas fa-shopping-bag"></i>
+                                    </div>
+                                    <h3>$ 39.99</h3>
+                                    <h2>Gathered Sweatshirt</h2>
+                                    <div class="star">
+                                        <img src="/frontend/images/star.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <a href="/product/2">
+                            <div class="produk">
+                                <img src="/frontend/images/products/product7.jpg" alt="">
+                                <div class="text-produk">
+                                    <div class="tombol">
+                                        <i class="far fa-heart"></i>
+                                        <i class="fas fa-shopping-bag"></i>
+                                    </div>
+                                    <h3>$ 31.99</h3>
+                                    <h2>Cropped Sweatshirt</h2>
+                                    <div class="star">
+                                        <img src="/frontend/images/star.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <a href="/product/2">
+                            <div class="produk">
+                                <img src="/frontend/images/products/product8.jpg" alt="">
+                                <div class="text-produk">
+                                    <div class="tombol">
+                                        <i class="far fa-heart"></i>
+                                        <i class="fas fa-shopping-bag"></i>
+                                    </div>
+                                    <h3>$ 32.99</h3>
+                                    <h2>Embroidered Sweatshirt</h2>
+                                    <div class="star">
+                                        <img src="/frontend/images/star.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="bg-acc">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="judul">
+                            <h3>On <strong>Accessories</strong></h3>
+                            <h1>Accessories</h1>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <a href="/product/2">
+                            <div class="produk">
+                                <img src="/frontend/images/products/product9.jpg" alt="">
+                                <div class="text-produk">
+                                    <div class="tombol">
+                                        <i class="far fa-heart"></i>
+                                        <i class="fas fa-shopping-bag"></i>
+                                    </div>
+                                    <h3>$ 28.99</h3>
+                                    <h2>Basic City Bag</h2>
+                                    <div class="star">
+                                        <img src="/frontend/images/star.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <a href="/product/2">
+                            <div class="produk">
+                                <img src="/frontend/images/products/product10.jpg" alt="">
+                                <div class="text-produk">
+                                    <div class="tombol">
+                                        <i class="far fa-heart"></i>
+                                        <i class="fas fa-shopping-bag"></i>
+                                    </div>
+                                    <h3>$ 49.99</h3>
+                                    <h2>Leather City Bag</h2>
+                                    <div class="star">
+                                        <img src="/frontend/images/star.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <a href="/product/2">
+                            <div class="produk">
+                                <img src="/frontend/images/products/product11.jpg" alt="">
+                                <div class="text-produk">
+                                    <div class="tombol">
+                                        <i class="far fa-heart"></i>
+                                        <i class="fas fa-shopping-bag"></i>
+                                    </div>
+                                    <h3>$ 23.99</h3>
+                                    <h2>Basketball Sneakers</h2>
+                                    <div class="star">
+                                        <img src="/frontend/images/star.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <a href="/product/2">
+                            <div class="produk">
+                                <img src="/frontend/images/products/product12.jpg" alt="">
+                                <div class="text-produk">
+                                    <div class="tombol">
+                                        <i class="far fa-heart"></i>
+                                        <i class="fas fa-shopping-bag"></i>
+                                    </div>
+                                    <h3>$ 55.99</h3>
+                                    <h2>Nike Sock Dart</h2>
+                                    <div class="star">
+                                        <img src="/frontend/images/star.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="bg-gallery">
+            <div class="container">
+                <div class="judul">
+                    <h3>On <strong>Gallery</strong></h3>
+                    <h1>Fashion Gallery</h1>
+                </div>
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="/frontend/images/gallery1.jpeg" class="d-block w-100">
+                                </div>
+                                <div class="col">
+                                    <img src="/frontend/images/gallery2.jpg" class="d-block w-100">
+                                </div>
+                                <div class="col col-none">
+                                    <img src="/frontend/images/gallery3.jpg" class="d-block w-100">
+                                </div>
+                                <div class="col col-none">
+                                    <img src="/frontend/images/gallery4.jpg" class="d-block w-100">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="/frontend/images/gallery5.jpg" class="d-block w-100">
+                                </div>
+                                <div class="col">
+                                    <img src="/frontend/images/gallery6.jpg" class="d-block w-100">
+                                </div>
+                                <div class="col col-none">
+                                    <img src="/frontend/images/gallery7.jpg" class="d-block w-100">
+                                </div>
+                                <div class="col col-none">
+                                    <img src="/frontend/images/gallery8.jpg" class="d-block w-100">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div th:replace="/frontend/fragments/footer::footer"></div>
+    </div>
+</body>
+</html>
