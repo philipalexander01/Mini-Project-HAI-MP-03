@@ -1,4 +1,4 @@
-package com.haimp03.onfashion.controllers;
+package com.haimp03.onfashion.controllers.backend;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
