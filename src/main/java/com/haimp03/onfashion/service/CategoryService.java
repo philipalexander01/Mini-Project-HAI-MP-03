@@ -29,7 +29,7 @@ public class CategoryService {
         categoryRepository.deleteById(id);        
     }
 
-    public void update(Category product) {
-        categoryRepository.save(product);
+    public void update(Category category) {
+        categoryRepository.save(category);
     }
 }
