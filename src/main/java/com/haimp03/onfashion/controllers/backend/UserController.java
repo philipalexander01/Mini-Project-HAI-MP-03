@@ -69,8 +69,9 @@ public class UserController {
     }
 
     @GetMapping("/{id}/delete")
-	public String delete(@PathVariable("id") Long id){
+	public String delete(@PathVariable("id") Long id, RedirectAttributes redirectAttributes){
 		userService.deleteUser(id);
+        redirectAttributes.addFlashAttribute("successMessage","Successfully Deleted Data");
         return "redirect:/admin/user";
 	}
     
