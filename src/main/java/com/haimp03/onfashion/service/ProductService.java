@@ -17,6 +17,10 @@ public class ProductService {
         return productRepository.findAll();
     }
 
+    public Iterable<Product> find4(){
+        return productRepository.findTop4By();
+    }
+
     public void store(Product product){
         productRepository.save(product);
     }
