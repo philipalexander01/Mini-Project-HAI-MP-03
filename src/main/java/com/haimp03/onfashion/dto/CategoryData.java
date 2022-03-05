@@ -5,27 +5,13 @@ import javax.validation.constraints.NotEmpty;
 public class CategoryData {
     public Long category_id;
 
-    @NotEmpty(message = "Nama Kategori tidak boleh kosong")
+    @NotEmpty(message = "Category Name Cannot Be Empty")
     public String name;
     
-    @NotEmpty(message = "Deskripsi Kategori tidak boleh kosong")
     public String description;
 
     public CategoryData() {
     }
-
-
-
-    public CategoryData(Long category_id, String name,
-            String description) {
-        this.category_id = category_id;
-        this.name = name;
-        this.description = description;
-    }
-
-
-
-
 
 
 

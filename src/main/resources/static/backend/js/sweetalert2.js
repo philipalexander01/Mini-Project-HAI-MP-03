@@ -21,6 +21,7 @@
                     'Your data has been deleted.',
                     'success'
                 )
+                Swal.close()
             }
         })
     })

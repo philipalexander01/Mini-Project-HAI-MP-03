@@ -47,13 +47,17 @@ public class CategoryController {
     }
 
     @PostMapping("/store")
-    public String store(@Valid CategoryData categoryData, BindingResult bindingResult,RedirectAttributes redirectAttributes) {
+    public String store(@Valid CategoryData categoryData, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             return "backend/pages/category/create";
         } else {
             categoryService.store(modelMapper.map(categoryData, Category.class));
             redirectAttributes.addFlashAttribute("successMessage","Successfully Add New Data");
         }
+        System.out.println(
+            
+
+        );
         return "redirect:/admin/category";
     }
 
@@ -64,11 +68,11 @@ public class CategoryController {
     }
 
     @PostMapping("/update")
-    public String update(@Valid CategoryData categoryData, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+    public String update(@Valid CategoryData categoryData, BindingResult bindingResult,
+     RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             return "backend/pages/category/edit";
         } else {
-            categoryData.setCategory_id(categoryData.category_id);
             categoryService.update(modelMapper.map(categoryData, Category.class));
         }
         redirectAttributes.addFlashAttribute("successMessage","Successfully Update Data");
@@ -76,8 +80,15 @@ public class CategoryController {
     }
 
 	@GetMapping("/delete/{id}")
-	public String delete(@PathVariable("id") Long id){
-		categoryService.deleteById(id);
+	public String delete(@PathVariable("id") Long id, RedirectAttributes redirectAttributes){
+        try {
+            categoryService.deleteById(id);
+            redirectAttributes.addFlashAttribute("successMessage","Successfully Deleted Data");
+        } catch (Exception ex) {
+            if(ex.getCause().getMessage().equalsIgnoreCase("could not execute statement")){
+                redirectAttributes.addFlashAttribute("errorMessage", "Cannot deleted this data because category already used by others product");
+            }
+        }
         return "redirect:/admin/category";
 	}
 }
