@@ -4,6 +4,7 @@ package com.haimp03.onfashion.service;
 import java.util.Optional;
 
 import com.haimp03.onfashion.entity.User;
+import com.haimp03.onfashion.repository.LoginRepository;
 import com.haimp03.onfashion.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,9 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepo;
+
+    @Autowired
+    private LoginRepository loginRepo;
 
     public void addUser(User user){
         userRepo.save(user);
@@ -35,6 +39,10 @@ public class UserService {
 
     public void deleteUser(Long id){
         userRepo.deleteById(id);
+    }
+
+    public User login(String username, String password){
+        return loginRepo.findByUsernameAndPassword(username, password);
     }
     
     
