@@ -393,11 +393,17 @@ nav ul li a:hover{
 }
 
 .flex-center {
-    margin-left: 2rem;
+    padding-left: 2rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 100%;
+    box-sizing: border-box;
+}
+
+.flex-center > div {
+    width: 100%;
+    flex-grow: 1;
 }
 
 .harga{

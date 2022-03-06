@@ -1,7 +1,9 @@
 package com.haimp03.onfashion.service;
 
+import java.util.List;
 import java.util.Optional;
 
+import com.haimp03.onfashion.dto.FrontendInterface;
 import com.haimp03.onfashion.entity.Product;
 import com.haimp03.onfashion.repository.ProductRepository;
 
@@ -19,6 +21,10 @@ public class ProductService {
 
     public Iterable<Product> find4(){
         return productRepository.findTop4By();
+    }
+
+    public List<FrontendInterface> findFrontendProducts() {
+        return productRepository.findTop3FrontendProducts();
     }
 
     public void store(Product product){
