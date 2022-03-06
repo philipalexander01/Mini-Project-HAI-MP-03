@@ -41,7 +41,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 @Controller
 @RequestMapping("/admin/product")
 public class ProductController {
-    private static String UPLOADED_PRODUCT_PATH = "src\\main\\resources\\static\\backend\\images\\products\\";
+    private static String UPLOADED_PRODUCT_PATH = "src/main/resources/static/images/products/";
 
     @Autowired
     private CategoryService categoryService;
