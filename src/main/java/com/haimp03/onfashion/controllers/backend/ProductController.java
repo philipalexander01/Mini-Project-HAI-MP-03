@@ -81,7 +81,6 @@ public class ProductController {
                 productService.store(modelMapper.map(productData, Product.class));
                 redirectAttributes.addFlashAttribute("successMessage", "Successfully Add New Data");
             }
-
         } catch (Exception ex) {
             if (ex.getCause().getMessage().equalsIgnoreCase("could not execute statement")) {
                 redirectAttributes.addFlashAttribute("errorMessage", "Product Code already available");

@@ -75,7 +75,7 @@
                   <input  name="product_photo" accept="image/*" type="file" class="form-control" id="photo"  />
                 </div>
                 <div class="col-6">
-                  <img id="productPhoto" height="200px" width="150px" src="#" th:src="@{'/backend/images/products/'+${productData.photo}}" />
+                  <img id="productPhoto" height="200px" width="150px" src="#" th:src="@{'/images/products/'+${productData.photo}}" />
                 </div>
               </div>
               <!-- <span th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}" class="text-danger">Code Error</span> -->
