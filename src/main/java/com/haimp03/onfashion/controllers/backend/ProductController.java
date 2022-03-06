@@ -41,7 +41,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 @Controller
 @RequestMapping("/admin/product")
 public class ProductController {
-    private static String UPLOADED_PRODUCT_PATH = "src\\main\\resources\\static\\backend\\images\\products\\";
+    private static String UPLOADED_PRODUCT_PATH = "src/main/resources/static/images/products/";
 
     @Autowired
     private CategoryService categoryService;
@@ -81,7 +81,6 @@ public class ProductController {
                 productService.store(modelMapper.map(productData, Product.class));
                 redirectAttributes.addFlashAttribute("successMessage", "Successfully Add New Data");
             }
-
         } catch (Exception ex) {
             if (ex.getCause().getMessage().equalsIgnoreCase("could not execute statement")) {
                 redirectAttributes.addFlashAttribute("errorMessage", "Product Code already available");

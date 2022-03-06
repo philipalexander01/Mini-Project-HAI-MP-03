@@ -5,13 +5,13 @@ import javax.validation.constraints.NotEmpty;
 public class UserData {
     public Long user_id;
 
-    @NotEmpty(message = "Nama Panjang tidak boleh kosong")
+    @NotEmpty(message = "Full Name Cannot Be Empty")
     public String fullname;
     
-    @NotEmpty(message = "Username tidak boleh kosong")
+    @NotEmpty(message = "Username Cannot Be Empty")
     public String username;
 
-    @NotEmpty(message = "Password tidak boleh kosong")
+    @NotEmpty(message = "Password Cannot Be Empty")
     public String password;
 
     public UserData() {
