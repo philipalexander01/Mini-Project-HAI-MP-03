@@ -40,13 +40,19 @@ public class UserController {
 
     @PostMapping("/store")
     public String store(@Valid UserData userData, BindingResult bindingResult,RedirectAttributes redirectAttributes) {
-        if (bindingResult.hasErrors()) {
-            return "backend/pages/user/create";
-        } else {
-            userData.setUser_id(userData.user_id);
-            userService.addUser(modelMapper.map(userData, User.class));
-        }
-        redirectAttributes.addFlashAttribute("successMessage","Successfully Add New Data");
+        try {
+            if (bindingResult.hasErrors()) {
+                return "backend/pages/user/create";
+            } else {
+                userData.setUser_id(userData.user_id);
+                userService.addUser(modelMapper.map(userData, User.class));
+            }
+            redirectAttributes.addFlashAttribute("successMessage","Successfully Add New Data");
+        } catch (Exception ex) {
+            if (ex.getCause().getMessage().equalsIgnoreCase("could not execute statement")) {
+                redirectAttributes.addFlashAttribute("errorMessage", "Username already available");
+            }      
+          }
         return "redirect:/admin/user";
     }
 
@@ -58,13 +64,19 @@ public class UserController {
 
     @PostMapping("/update")
     public String update(@Valid UserData userData, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-        if (bindingResult.hasErrors()) {
-            return "backend/pages/user/edit";
-        } else {
-            userData.setUser_id(userData.user_id);
-            userService.updateUser(modelMapper.map(userData, User.class));
+        try {
+            if (bindingResult.hasErrors()) {
+                return "backend/pages/user/edit";
+            } else {
+                userData.setUser_id(userData.user_id);
+                userService.updateUser(modelMapper.map(userData, User.class));
+            }
+            redirectAttributes.addFlashAttribute("successMessage","Successfully Update Data");
+        } catch (Exception ex) {
+            if (ex.getCause().getMessage().equalsIgnoreCase("could not execute statement")) {
+                redirectAttributes.addFlashAttribute("errorMessage", "Username already available");
+            }   
         }
-        redirectAttributes.addFlashAttribute("successMessage","Successfully Update Data");
         return "redirect:/admin/user";
     }
 
