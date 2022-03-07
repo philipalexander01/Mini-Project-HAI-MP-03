@@ -16,16 +16,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Fontawesome -->
     <script src="https://kit.fontawesome.com/f0f2d9386c.js" crossorigin="anonymous"></script>
-    <!-- Local Js -->
-    <script>
-        function openBar(){
-            document.getElementById("bar").style.width = "100vw";
-        }
-
-        function closeBar(){
-            document.getElementById("bar").style.width = "0";
-        }
-    </script>
 </head>
 <body>
     <div class="wrapper">
@@ -62,7 +52,7 @@
                                     <p th:text="${productData.description}">
                                         Basic Hoodie is a simple cotton hoodie that is not too thick but is still warm, Faux fur embroidered brand print zip hoodie, Hooded neckline, Unlined, Regular fit, Zip and hood drawstring fastening, and 2 front pockets
                                     </p>
-                                    <button>Buy Now</button>
+                                    <button data-bs-toggle="modal" data-bs-target="#transactionModal">Buy Now</button>
                                 </div>
                             </div>
                         </div>
@@ -169,5 +159,77 @@
         </section>
         <div th:replace="/frontend/fragments/footer::footer"></div>
     </div>
+
+    <div class="modal fade" id="transactionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="transactionModal" th:text="'Order Form for ' + ${productData.name} + ' ($' + ${productData.price} + ')'">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <input type="number" id="price" hidden th:field="*{productData.price}">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingName" placeholder="Adi Adnyana" required>
+                            <label for="floatingName">Fullname *</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="floatingEmail" placeholder="adiadnyana22@gmail.com" required>
+                            <label for="floatingEmail">Email *</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingPhone" placeholder="+6281246868369" required>
+                            <label for="floatingPhone">Phone Number *</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingAddress" placeholder="Jl. Diponegoro No. 39 Pedungan" required>
+                            <label for="floatingAddress">Address *</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control" placeholder="Leave a description here" id="floatingDescription" style="height: 100px"></textarea>
+                            <label for="floatingDescription">Description</label>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="form-floating mb-3">
+                                    <input type="number" class="form-control" id="floatingQuantity" placeholder="1" min="1" value="1">
+                                    <label for="floatingQuantity">Quantity</label>
+                                </div>
+                            </div>
+                            <div class="col-9">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="floatingTotal" placeholder="1000" disabled th:field="*{productData.price}">
+                                    <label for="floatingTotal">Total Price</label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a th:href="@{/}"><button type="button" class="btn btn-onfashion">Place Order</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Local Js -->
+    <script>
+        function openBar(){
+            document.getElementById("bar").style.width = "100vw";
+        }
+
+        function closeBar(){
+            document.getElementById("bar").style.width = "0";
+        }
+
+        const quantity = document.querySelector("#floatingQuantity");
+        const total = document.querySelector("#floatingTotal");
+        const price = document.querySelector("#price");
+        quantity.addEventListener('change', () => {
+            total.value = `${quantity.value * price.value}`;
+        })
+    </script>
 </body>
 </html>

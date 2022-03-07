@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import com.haimp03.onfashion.dto.UserData;
 import com.haimp03.onfashion.entity.User;
+import com.haimp03.onfashion.rest_api.RestWeather;
 import com.haimp03.onfashion.service.UserService;
 
 import org.modelmapper.ModelMapper;
@@ -26,23 +27,29 @@ public class UserController {
     private UserService userService;
 
     @Autowired
+    private RestWeather restWeather;
+
+    @Autowired
     private ModelMapper modelMapper;
 
     @GetMapping
     public String index(Model model){
+        model.addAttribute("weatherData", restWeather.getCurrentWeather());
         return "backend/pages/user/index";
     }
 
     @GetMapping("/create")
     public String addUser(Model model){
+        model.addAttribute("weatherData", restWeather.getCurrentWeather());
         model.addAttribute("userData", new UserData());
         return "backend/pages/user/create";
     }
 
     @PostMapping("/store")
-    public String store(@Valid UserData userData, BindingResult bindingResult,RedirectAttributes redirectAttributes) {
+    public String store(@Valid UserData userData, BindingResult bindingResult,RedirectAttributes redirectAttributes, Model model) {
         try {
             if (bindingResult.hasErrors()) {
+                model.addAttribute("weatherData", restWeather.getCurrentWeather());
                 return "backend/pages/user/create";
             } else {
                 userData.setUser_id(userData.user_id);
@@ -62,14 +69,17 @@ public class UserController {
 
     @GetMapping("/{id}/edit")
     public String edit(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("weatherData", restWeather.getCurrentWeather());
         model.addAttribute("userData", modelMapper.map(userService.findById(id).get(), UserData.class)        );
         return "backend/pages/user/edit";
     }
 
     @PostMapping("/update")
-    public String update(@Valid UserData userData, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+    public String update(@Valid UserData userData, BindingResult bindingResult, RedirectAttributes redirectAttributes,
+    Model model) {
         try {
             if (bindingResult.hasErrors()) {
+                model.addAttribute("weatherData", restWeather.getCurrentWeather());
                 return "backend/pages/user/edit";
             } else {
                 userData.setUser_id(userData.user_id);

@@ -5,9 +5,10 @@
     </div>
     <div class="weather-data">
         <div>
-            <span>Raining with Sun</span>
-            <span><strong>30 &#8451;</strong></span>
+            <span th:text="${weatherData.name}"></span>
+            <span th:text="${weatherData.weather[0].description}"></span>
+            <span th:text="${weatherData.main.temp}"><strong>&#8451;</strong></span>
         </div>
-        <i class="fas fa-cloud-sun-rain"></i>
+        <img th:src="@{'http://openweathermap.org/img/w/'+ ${weatherData.weather[0].icon}+'.png'}"></img>
     </div>
 </div>

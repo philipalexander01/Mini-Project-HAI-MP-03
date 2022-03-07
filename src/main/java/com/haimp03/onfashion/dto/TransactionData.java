@@ -1,69 +1,35 @@
-package com.haimp03.onfashion.entity;
+package com.haimp03.onfashion.dto;
 
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.print.attribute.standard.DateTimeAtCompleted;
+import com.haimp03.onfashion.entity.Product;
 
-import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
-@Entity
-@Table(name = "transactions")
-public class Transaction {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class TransactionData {
     public Long transaction_id;
 
-    @Column(length = 100, nullable = false, unique = true)
     public String code;
 
-    @CreationTimestamp
-    @Column(nullable = false)
-    public Timestamp created_at;
+    public String created_at;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id", nullable = false)
     public Product product;
 
-    @Column(length = 255)
     public String description;
 
-    @Column(nullable = false)
     public Integer quantity;
 
-    @Column(nullable = false)
     public double total_price;
 
-    @Column(length = 50, nullable = false)
     public String customer_name;
 
-    @Column(length = 255, nullable = false)
     public String address;
 
-    @Column(length = 100, nullable = false)
     public String email;
 
-    @Column(length = 20, nullable = false)
     public String phone_number;
-    
-    @Column(length = 20, nullable = false)
-    @ColumnDefault("'Not Yet Sent'")
+
     public String status;
 
-
-
+    
+    
     public String getStatus() {
         return status;
     }
@@ -88,11 +54,11 @@ public class Transaction {
         this.code = code;
     }
 
-    public Timestamp getCreated_at() {
+    public String getCreated_at() {
         return created_at;
     }
 
-    public void setCreated_at(Timestamp created_at) {
+    public void setCreated_at(String created_at) {
         this.created_at = created_at;
     }
 
@@ -161,4 +127,5 @@ public class Transaction {
     }
 
     
+
 }
