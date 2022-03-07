@@ -13,7 +13,7 @@ public class RestWeather {
     
     @GetMapping
     public WeatherData getCurrentWeather(){
-        String url = "https://api.openweathermap.org/data/2.5/weather?lat=-6.186486&lon=106.834091&appid=b7ab51b9d061c03f3079e740b32b60f1";
+        String url = "https://api.openweathermap.org/data/2.5/weather?q=jakarta&appid=b7ab51b9d061c03f3079e740b32b60f1";
         RestTemplate restTemplate = new RestTemplate();
         WeatherData weatherData = restTemplate.getForObject(url, WeatherData.class);
         return weatherData;

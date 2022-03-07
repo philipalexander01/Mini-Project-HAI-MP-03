@@ -6,11 +6,16 @@ import java.util.ArrayList;
 public class WeatherData {
     public String name;
     public ArrayList<WeatherDetail> weather;
+    public TemperatureData main;
     
 
-    public WeatherData(String name, ArrayList<WeatherDetail> weather) {
-        this.name = name;
-        this.weather = weather;
+    public TemperatureData getMain() {
+        return main;
+    }
+
+
+    public void setMain(TemperatureData main) {
+        this.main = main;
     }
 
 
@@ -70,6 +75,32 @@ public class WeatherData {
         }
     
     }   
+
+    public static class TemperatureData{
+        private Double temp;
+
+        
+        public TemperatureData() {
+        }
+
+    
+        
+    /**
+     * @return Double return the temp
+     */
+    public String getTemp() {
+        return String.format("%.2f",(temp - 273.15)) ;
+    }
+
+    /**
+     * @param temp the temp to set
+     */
+    public void setTemp(Double temp) {
+        this.temp = temp;
+    }
+    }
+
+
 
 }
 

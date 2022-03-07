@@ -24,7 +24,7 @@
         <h3>Add Product</h3>
         <form th:object="${productData}" th:action="@{/admin/product/store}" method="post" enctype="multipart/form-data">
           <div class="row">
-            <div class="col-6">
+            <div class="col-md-7">
               <div class="form-group mt-2">
                 <label for="name">Code</label>
                 <input th:field="*{code}" type="text" class="form-control" id="code" placeholder="Enter Product Code" />
@@ -37,7 +37,7 @@
                 <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger">Code Error</span>
               </div>
     
-              <div class="form-group mt-3">
+              <div class="form-group mt-2">
                 <label for="category_id">Category</label>
                 <select th:object="${productData.category}" name="category" id="category" class="form-select">
                   <option value="">Select Category</option>
@@ -48,7 +48,7 @@
                   Error</span>
               </div>
     
-              <div class="form-group mt-3">
+              <div class="form-group mt-2">
                 <label for="description">Description</label>
                 <textarea th:field="*{description}" type="text" class="form-control" id="description"
                   placeholder="Enter Category Description"
@@ -56,29 +56,29 @@
                 <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="text-danger">Code Error</span>
 
               </div>
+
+              <div class="form-group mt-2">
+                <label for="price">Price</label>
+                <input th:field="*{price}" type="number" class="form-control" id="price" placeholder="Enter Product price" />
+                <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="text-danger">Code Error</span>
+              </div>
+             
+              <div class="form-group mt-2">
+                <label for="stock">Stock</label>
+                <input th:field="*{stock}" type="number" class="form-control" id="stock" placeholder="Enter Product Stock" />
+                <span th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}" class="text-danger">Code Error</span>
+              </div>
              </div>
     
-          <div class="col-6">
-            <div class="form-group mt-2">
-              <label for="price">Price</label>
-              <input th:field="*{price}" type="number" class="form-control" id="price" placeholder="Enter Product price" />
-              <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="text-danger">Code Error</span>
-            </div>
-           
-            <div class="form-group mt-2">
-              <label for="stock">Stock</label>
-              <input th:field="*{stock}" type="number" class="form-control" id="stock" placeholder="Enter Product Stock" />
-              <span th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}" class="text-danger">Code Error</span>
-            </div>
-            
+          <div class="col-md-5">
             <div class="form-group mt-2">
               <label for="product_photo">Photo</label>
               <div class="row">
-                <div class="col-6">
+                <div class="col-12">
                   <input  name="product_photo" accept="image/*" type="file" class="form-control" id="photo"  />
                 </div>
-                <div class="col-6">
-                  <img id="productPhoto" height="200px" width="150px" src="#" th:src="@{'/images/ic_photo.png'}" />
+                <div class="col-12 mt-3">
+                  <img id="productPhoto" class="w-100" src="#" th:src="@{'/images/ic_photo.png'}" />
                 </div>
               </div>              <!-- <span th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}" class="text-danger">Code Error</span> -->
             </div>
