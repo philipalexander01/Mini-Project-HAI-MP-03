@@ -555,6 +555,17 @@ nav ul li a:hover{
     transition: .5s;
 }
 
+.btn-onfashion {
+    background-color: #11998e !important;
+    color: #fff !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+}
+
+.btn-onfashion:hover {
+    background-color: #0e7e74 !important;
+}
+
 @media(max-width: 1200px){
     .text-banner p {
         display: none;
