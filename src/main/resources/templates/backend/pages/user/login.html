@@ -26,6 +26,16 @@
                 <div class="card-body p-4 p-sm-5">
                   <h5 class="card-title text-center mb-5 fw-light fs-5">Sign In</h5>
                   <form th:action="@{/doLogin}" th:object="${userData}" method="post">
+                    <div th:if="${param.error}">
+                      <div class="alert alert-danger">
+                          Invalid username or password.
+                      </div>
+                    </div>
+                    <div th:if="${param.logout}">
+                        <div class="alert alert-danger">
+                            Successfully logged out.
+                        </div>
+                    </div>
                     <div class="form-floating mb-3">
                       <input type="text" th:field="*{username}" class="form-control" id="floatingInput" placeholder="name@example.com" required>
                       <label for="floatingInput">Username</label>
