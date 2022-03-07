@@ -5,9 +5,10 @@
     </div>
     <div class="weather-data">
         <div>
-            <span th:text="${weatherData.name}"></span>
-            <span th:text="${weatherData.weather[0].description}"></span>
-            <span th:text="${weatherData.main.temp}"><strong>&#8451;</strong></span>
+            <span><strong th:text="${weatherData.name}"></strong> (<span th:text="${weatherData.main.temp} + '&#8451;'"></span>)</span>
+            <span>
+                <span th:text="${weatherData.weather[0].description}"></span>
+            </span>
         </div>
         <img th:src="@{'http://openweathermap.org/img/w/'+ ${weatherData.weather[0].icon}+'.png'}"></img>
     </div>

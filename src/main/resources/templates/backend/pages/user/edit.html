@@ -18,7 +18,7 @@
     <div class="main">
       <div th:replace="backend/fragments/navbar::navbar"></div>
       <div class="content">
-        <div class="container">
+        <div class="">
           <h3>Edit User</h3>
           <form th:object="${userData}" th:action="@{/admin/user/update}" method="post">
             <div class="form-group mt-2">
