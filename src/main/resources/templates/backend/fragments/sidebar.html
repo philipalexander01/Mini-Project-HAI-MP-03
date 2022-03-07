@@ -17,6 +17,8 @@
         </div>
     </nav>
     <div class="logout p-3">
-        <a href="" class="text-danger"><i class="fas fa-angle-left"></i><span>Logout</span></a>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" id="logout" class="text-danger btn btn-transparent"><i class="fas fa-angle-left"></i><span>&nbsp;&nbsp;Logout</span></button>
+        </form>
     </div>
 </div>
