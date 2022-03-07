@@ -12,6 +12,7 @@ import com.haimp03.onfashion.dto.CategoryData;
 import com.haimp03.onfashion.dto.ProductData;
 import com.haimp03.onfashion.entity.Category;
 import com.haimp03.onfashion.entity.Product;
+import com.haimp03.onfashion.rest_api.RestWeather;
 import com.haimp03.onfashion.service.CategoryService;
 import com.haimp03.onfashion.service.ProductService;
 
@@ -50,15 +51,20 @@ public class ProductController {
     private ProductService productService;
 
     @Autowired
+    private RestWeather restWeather;
+    
+    @Autowired
     private ModelMapper modelMapper;
 
     @GetMapping
     public String index(Model model) {
+        model.addAttribute("weatherData", restWeather.getCurrentWeather());
         return "backend/pages/product/index";
     }
 
     @GetMapping("/create")
     public String create(Model model) {
+        model.addAttribute("weatherData", restWeather.getCurrentWeather());
         model.addAttribute("productData", new ProductData());
         model.addAttribute("categoryData", getCategories());
         return "backend/pages/product/create";
@@ -70,6 +76,7 @@ public class ProductController {
             @RequestParam("product_photo") MultipartFile photo) {
         try {
             if (bindingResult.hasErrors()) {
+                model.addAttribute("weatherData", restWeather.getCurrentWeather());
                 model.addAttribute("categoryData", getCategories());
                 return "backend/pages/product/create";
             } else {
@@ -92,6 +99,7 @@ public class ProductController {
 
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("weatherData", restWeather.getCurrentWeather());
         model.addAttribute("productData", modelMapper.map(productService.findById(id).get(), ProductData.class));
         model.addAttribute("categoryData", getCategories());
         return "backend/pages/product/edit";
@@ -105,6 +113,7 @@ public class ProductController {
 
         try {
             if (bindingResult.hasErrors()) {
+                model.addAttribute("weatherData", restWeather.getCurrentWeather());
                 model.addAttribute("categoryData", getCategories());
                 return "backend/pages/product/edit";
             } else {
@@ -137,8 +146,16 @@ public class ProductController {
     }
 
     @GetMapping("/detail/{id}")
-    public String detail(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("productData", modelMapper.map(productService.findById(id).get(), ProductData.class));
+    public String detail(@PathVariable("id") Long id, Model model, RedirectAttributes redirectAttributes) {
+        try {
+            model.addAttribute("weatherData", restWeather.getCurrentWeather());
+            model.addAttribute("productData", modelMapper.map(productService.findById(id).get(), ProductData.class));
+        } catch (Exception ex) {
+            if (ex.getCause().getMessage().equalsIgnoreCase("could not execute statement")) {
+                redirectAttributes.addFlashAttribute("errorMessage",
+                        "Cannot deleted this data because product already used in transactions");
+            }
+        }
         return "backend/pages/product/detail";
     }
 
