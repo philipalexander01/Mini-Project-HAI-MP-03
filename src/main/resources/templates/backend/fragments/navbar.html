@@ -1,6 +1,6 @@
 <div class="navbar" th:fragment="navbar">
     <div class="user-data">
-        <span>Hi, <strong>Adi Adnyana</strong></span>
+        <span>Hi, <strong>[[${#request.userPrincipal.principal.fullname}]]</strong></span>
         <button id="openSidebar"><i class="fas fa-bars"></i></button>
     </div>
     <div class="weather-data">

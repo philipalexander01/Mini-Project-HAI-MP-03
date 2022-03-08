@@ -9,6 +9,7 @@ import com.haimp03.onfashion.service.UserService;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -52,6 +53,9 @@ public class UserController {
                 return "backend/pages/user/create";
             } else {
                 userData.setUser_id(userData.user_id);
+                BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+                String encodedPassword = passwordEncoder.encode(userData.password);
+                userData.setPassword(encodedPassword);
                 userService.addUser(modelMapper.map(userData, User.class));
             }
             redirectAttributes.addFlashAttribute("successMessage","Successfully Add New Data");
@@ -66,7 +70,7 @@ public class UserController {
     @GetMapping("/{id}/edit")
     public String edit(@PathVariable("id") Long id, Model model) {
         model.addAttribute("weatherData", restWeather.getCurrentWeather());
-        model.addAttribute("userData", modelMapper.map(userService.findById(id).get(), UserData.class)        );
+        model.addAttribute("userData", modelMapper.map(userService.findById(id).get(), UserData.class));
         return "backend/pages/user/edit";
     }
 
@@ -78,13 +82,21 @@ public class UserController {
                 model.addAttribute("weatherData", restWeather.getCurrentWeather());
                 return "backend/pages/user/edit";
             } else {
-                userData.setUser_id(userData.user_id);
-                userService.updateUser(modelMapper.map(userData, User.class));
+                if(userData.password == ""){
+                    userData.setUser_id(userData.user_id);
+                    userService.updateUserWithoutPassword(modelMapper.map(userData, User.class));
+                } else {
+                    userData.setUser_id(userData.user_id);
+                    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+                    String encodedPassword = passwordEncoder.encode(userData.password);
+                    userData.setPassword(encodedPassword);
+                    userService.updateUser(modelMapper.map(userData, User.class));
+                }
             }
             redirectAttributes.addFlashAttribute("successMessage","Successfully Update Data");
         } catch (Exception ex) {
             if (ex.getCause().getMessage().equalsIgnoreCase("could not execute statement")) {
-                redirectAttributes.addFlashAttribute("errorMessage", "Username already available");
+                redirectAttributes.addFlashAttribute("errorMessage", "Username already exist");
             }   
         }
         return "redirect:/admin/user";

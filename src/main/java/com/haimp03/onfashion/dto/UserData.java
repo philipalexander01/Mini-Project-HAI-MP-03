@@ -11,7 +11,7 @@ public class UserData {
     @NotEmpty(message = "Username Cannot Be Empty")
     public String username;
 
-    @NotEmpty(message = "Password Cannot Be Empty")
+    // @NotEmpty(message = "Password Cannot Be Empty")
     public String password;
 
     public UserData() {

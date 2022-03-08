@@ -36,9 +36,9 @@
                 Error</span>
             </div>
             <div class="form-group mt-3">
-              <label for="password">Password</label>
-              <input th:field="*{password}" type="text" class="form-control" id="password"
-                placeholder="Enter Password" />
+              <label for="password">Password (leave blank if you don't want to change password)</label>
+              <input type="text" class="form-control" id="password"
+                placeholder="Enter Password" name="password" value="" />
 
               <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger">Password
                 Error</span>
