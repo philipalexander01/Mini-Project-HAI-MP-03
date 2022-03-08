@@ -140,22 +140,23 @@ public class ProductController {
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
-        productService.deleteById(id);
-        redirectAttributes.addFlashAttribute("successMessage", "Successfully Deleted Data");
-        return "redirect:/admin/product";
-    }
-
-    @GetMapping("/detail/{id}")
-    public String detail(@PathVariable("id") Long id, Model model, RedirectAttributes redirectAttributes) {
         try {
-            model.addAttribute("weatherData", restWeather.getCurrentWeather());
-            model.addAttribute("productData", modelMapper.map(productService.findById(id).get(), ProductData.class));
+            productService.deleteById(id);
+            redirectAttributes.addFlashAttribute("successMessage", "Successfully Deleted Data");
         } catch (Exception ex) {
             if (ex.getCause().getMessage().equalsIgnoreCase("could not execute statement")) {
                 redirectAttributes.addFlashAttribute("errorMessage",
                         "Cannot deleted this data because product already used in transactions");
             }
         }
+        return "redirect:/admin/product";
+    }
+
+    @GetMapping("/detail/{id}")
+    public String detail(@PathVariable("id") Long id, Model model, RedirectAttributes redirectAttributes) {
+            model.addAttribute("weatherData", restWeather.getCurrentWeather());
+            model.addAttribute("productData", modelMapper.map(productService.findById(id).get(), ProductData.class));
+        
         return "backend/pages/product/detail";
     }
 

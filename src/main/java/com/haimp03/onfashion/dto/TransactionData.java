@@ -3,6 +3,8 @@ package com.haimp03.onfashion.dto;
 
 import com.haimp03.onfashion.entity.Product;
 
+import javax.validation.constraints.NotEmpty;
+
 public class TransactionData {
     public Long transaction_id;
 
@@ -18,18 +20,26 @@ public class TransactionData {
 
     public double total_price;
 
+    @NotEmpty(message = "Customer Name Cannot Be Empty")
     public String customer_name;
 
+    @NotEmpty(message = "Address Cannot Be Empty")
     public String address;
 
+    @NotEmpty(message = "Email Cannot Be Empty")
     public String email;
 
+    @NotEmpty(message = "Phone Number Cannot Be Empty")
     public String phone_number;
 
     public String status;
 
     
     
+    
+    public TransactionData() {
+    }
+
     public String getStatus() {
         return status;
     }

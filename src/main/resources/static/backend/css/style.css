@@ -2,11 +2,16 @@ a {
     text-decoration: none !important;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 .wrapper {
     width: 100vw;
     min-height: 100vh;
     display: flex;
     position: relative;
+    overflow-x: hidden;
 }
 
 .sidebar {
@@ -19,6 +24,9 @@ a {
     justify-content: space-between;
     overflow: hidden;
     transition: .5s;
+    /* width: calc(30vw - 24px - 2rem); */
+    /* width: 300px; */
+    /* min-width: 200px; */
 }
 
 .sidebar h1 {
@@ -106,13 +114,11 @@ nav .navbar {
     padding: .25rem;
 }
 
-.weather-data i {
-    display: block;
-    font-size: 2.5em;
-    margin-left: 1rem;
+.weather-data img {
+    margin-left: .5rem;
 }
 
-.weather-data span {
+.weather-data > div  > span {
     display: block;
     text-align: right;
 }
@@ -136,6 +142,7 @@ nav .navbar {
 .overflow-table {
     display: block;
     overflow-x: auto;
+    width: calc(100vw - 300px - 2rem);
 }
 
 .overflow-table > div > a {
@@ -151,6 +158,10 @@ nav .navbar {
     .flex-right {
         display: block;
         justify-content: stretch;
+    }
+
+    .overflow-table {
+        width: calc(100vw - 2rem);
     }
 
     .sidebar {

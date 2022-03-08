@@ -20,7 +20,7 @@
     <div class="main">
       <div th:replace="backend/fragments/navbar::navbar"></div>
       <div class="content">
-        <div class="container">
+        <div class="">
         <h3>Add Product</h3>
         <form th:object="${productData}" th:action="@{/admin/product/store}" method="post" enctype="multipart/form-data">
           <div class="row">
