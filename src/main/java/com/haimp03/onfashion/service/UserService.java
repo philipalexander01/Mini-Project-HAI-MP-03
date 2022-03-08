@@ -1,8 +1,6 @@
 package com.haimp03.onfashion.service;
 
 
-import java.util.Optional;
-
 import com.haimp03.onfashion.entity.User;
 import com.haimp03.onfashion.repository.LoginRepository;
 import com.haimp03.onfashion.repository.UserRepository;
@@ -10,6 +8,8 @@ import com.haimp03.onfashion.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @Service
 @Transactional

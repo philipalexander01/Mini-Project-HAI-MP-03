@@ -1,10 +1,6 @@
 package com.haimp03.onfashion.service;
 
-import java.util.Optional;
-
-import com.haimp03.onfashion.entity.Category;
 import com.haimp03.onfashion.entity.Transaction;
-import com.haimp03.onfashion.repository.CategoryRepository;
 import com.haimp03.onfashion.repository.TransactionRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
