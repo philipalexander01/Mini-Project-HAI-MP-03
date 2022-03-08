@@ -1,0 +1,16 @@
+<div th:fragment="sweetalert2">
+    <script th:if="${successMessage}">
+        Swal.fire(
+            'Order Success',
+            'Your order has been successful',
+            'success'
+        )
+    </script>
+    <script th:if="${errorMessage}">
+        Swal.fire(
+            'Something Wrong',
+            'Please try to order later',
+            'error'
+        )
+    </script>
+</div>

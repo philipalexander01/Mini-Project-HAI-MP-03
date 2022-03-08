@@ -26,10 +26,10 @@
             document.getElementById("bar").style.width = "0";
         }
     </script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-    <div th:replace="/backend/fragments/alert_message::alert_message"></div>
+    <div th:replace="/frontend/fragments/sweetalert::sweetalert2"></div>
 
     <div class="wrapper">
         <div th:replace="/frontend/fragments/navbar::navbar"></div>

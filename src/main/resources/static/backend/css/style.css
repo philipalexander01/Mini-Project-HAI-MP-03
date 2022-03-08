@@ -2,6 +2,10 @@ a {
     text-decoration: none !important;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 .wrapper {
     width: 100vw;
     min-height: 100vh;
