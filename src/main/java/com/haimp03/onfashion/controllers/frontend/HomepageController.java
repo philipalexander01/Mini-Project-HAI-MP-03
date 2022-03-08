@@ -2,6 +2,7 @@ package com.haimp03.onfashion.controllers.frontend;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -47,14 +48,42 @@ public class HomepageController {
     @GetMapping
     public String homepage(Model model) {
         List<FrontendInterface> allProduct = productService.findFrontendProducts();
-        // Set<String> categories = new HashSet<>();
-        // for(int i =0; i < allProduct.size(); i++){
-        //     categories.add(allProduct.get(i).getCategory_name());
-        // }
-        // System.out.println("dataku "+categories);
-        List<FrontendInterface> productCategory1 = allProduct.subList(0, 4);
-        List<FrontendInterface> productCategory2 = allProduct.subList(4, 8);
-        List<FrontendInterface> productCategory3 = allProduct.subList(0, 4);
+        List<FrontendInterface> productCategory1 = new ArrayList<FrontendInterface>();
+        List<FrontendInterface> productCategory2 = new ArrayList<FrontendInterface>();
+        List<FrontendInterface> productCategory3 = new ArrayList<FrontendInterface>();
+
+        Set<String> categories = new HashSet<>();
+        for(int i =0; i < allProduct.size(); i++){
+            categories.add(allProduct.get(i).getCategory_name());
+        }
+        
+        ArrayList<String> listCategory = new ArrayList<String>(categories);
+        if(listCategory.size() == 1){
+            for(int i =0; i < allProduct.size(); i++){
+                if(allProduct.get(i).getCategory_name().equals(listCategory.get(0))){
+                    productCategory1.add(allProduct.get(i));
+                }
+            }
+        }else if(listCategory.size() == 2){
+            for(int i =0; i < allProduct.size(); i++){
+                if(allProduct.get(i).getCategory_name().equals(listCategory.get(0))){
+                    productCategory1.add(allProduct.get(i));
+                }else if(allProduct.get(i).getCategory_name().equals(listCategory.get(1))){
+                    productCategory2.add(allProduct.get(i));
+                }
+            }
+        }else if(listCategory.size() == 3){
+            for(int i =0; i < allProduct.size(); i++){
+                if(allProduct.get(i).getCategory_name().equals(listCategory.get(0))){
+                    productCategory1.add(allProduct.get(i));
+                }else if(allProduct.get(i).getCategory_name().equals(listCategory.get(1))){
+                    productCategory2.add(allProduct.get(i));
+                }else if(allProduct.get(i).getCategory_name().equals(listCategory.get(2))){
+                    productCategory3.add(allProduct.get(i));
+                }
+            }
+        }
+
         model.addAttribute("productCategory1", productCategory1);
         model.addAttribute("productCategory2", productCategory2);
         model.addAttribute("productCategory3", productCategory3);
