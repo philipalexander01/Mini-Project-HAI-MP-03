@@ -1,25 +1,16 @@
 package com.haimp03.onfashion.controllers.frontend;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import com.haimp03.onfashion.dto.FrontendInterface;
 import com.haimp03.onfashion.dto.TransactionData;
-import com.haimp03.onfashion.dto.UserData;
 import com.haimp03.onfashion.entity.Product;
 import com.haimp03.onfashion.entity.Transaction;
-import com.haimp03.onfashion.entity.User;
 import com.haimp03.onfashion.service.ProductService;
-
 import com.haimp03.onfashion.service.TransactionService;
+
 import net.bytebuddy.utility.RandomString;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,6 +20,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import javax.validation.Valid;
 

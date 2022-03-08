@@ -1,7 +1,5 @@
 package com.haimp03.onfashion.controllers.backend;
 
-import javax.validation.Valid;
-
 import com.haimp03.onfashion.dto.UserData;
 import com.haimp03.onfashion.entity.User;
 import com.haimp03.onfashion.rest_api.RestWeather;
@@ -18,6 +16,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("admin/user")

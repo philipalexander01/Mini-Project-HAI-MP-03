@@ -1,11 +1,11 @@
 package com.haimp03.onfashion.security;
 
-import java.util.Collection;
-
 import com.haimp03.onfashion.entity.User;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
 
 public class CustomUserDetail implements UserDetails {
     private User user;

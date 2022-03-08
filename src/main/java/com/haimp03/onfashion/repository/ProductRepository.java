@@ -1,12 +1,12 @@
 package com.haimp03.onfashion.repository;
 
-import java.util.List;
-
 import com.haimp03.onfashion.dto.FrontendInterface;
 import com.haimp03.onfashion.entity.Product;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+
+import java.util.List;
 
 public interface ProductRepository extends CrudRepository<Product, Long> {
     
