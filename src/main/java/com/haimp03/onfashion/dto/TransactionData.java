@@ -36,6 +36,10 @@ public class TransactionData {
 
     
     
+    
+    public TransactionData() {
+    }
+
     public String getStatus() {
         return status;
     }
