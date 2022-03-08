@@ -2,7 +2,9 @@ package com.haimp03.onfashion.controllers.frontend;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.haimp03.onfashion.dto.FrontendInterface;
 import com.haimp03.onfashion.dto.TransactionData;
@@ -24,6 +26,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -44,9 +47,14 @@ public class HomepageController {
     @GetMapping
     public String homepage(Model model) {
         List<FrontendInterface> allProduct = productService.findFrontendProducts();
+        // Set<String> categories = new HashSet<>();
+        // for(int i =0; i < allProduct.size(); i++){
+        //     categories.add(allProduct.get(i).getCategory_name());
+        // }
+        // System.out.println("dataku "+categories);
         List<FrontendInterface> productCategory1 = allProduct.subList(0, 4);
         List<FrontendInterface> productCategory2 = allProduct.subList(4, 8);
-        List<FrontendInterface> productCategory3 = allProduct.subList(8, 12);
+        List<FrontendInterface> productCategory3 = allProduct.subList(0, 4);
         model.addAttribute("productCategory1", productCategory1);
         model.addAttribute("productCategory2", productCategory2);
         model.addAttribute("productCategory3", productCategory3);
@@ -62,7 +70,7 @@ public class HomepageController {
     }
 
     @PostMapping("/order")
-    public String orderProduct(@Valid TransactionData transactionData, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
+    public String orderProduct(@RequestParam("product_id") Integer productId ,@Valid TransactionData transactionData, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
         try {
             if (bindingResult.hasErrors()) {
                 return "frontend/pages/detail";
@@ -70,13 +78,16 @@ public class HomepageController {
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("ddMMyyyy");
                 LocalDateTime now = LocalDateTime.now();
                 transactionData.setCode(RandomString.make(20) + "_" + dtf.format(now));
-                transactionData.product = productService.findById(transactionData.product.getProduct_id()).get();
+                transactionData.setStatus("Not Yet Sent");
+                Product product = productService.findById(Long.valueOf(productId)).get();
+                transactionData.setTotal_price(transactionData.getQuantity()* product.getPrice());
+                transactionData.setProduct(product);
                 transactionService.addTransaction(modelMapper.map(transactionData, Transaction.class));
             }
-            redirectAttributes.addFlashAttribute("successMessage","Successfully Add New Data");
+            redirectAttributes.addFlashAttribute("successMessage","Successfully Add New Transaction");
         } catch (Exception ex) {
             if (ex.getCause().getMessage().equalsIgnoreCase("could not execute statement")) {
-                redirectAttributes.addFlashAttribute("errorMessage", "Username already available");
+                redirectAttributes.addFlashAttribute("errorMessage", "Failed Add New Transaction");
             }
         }
         return "redirect:/";

@@ -170,7 +170,7 @@
                 <div class="modal-body">
                     <input type="number" id="price" hidden th:field="*{productData.price}">
                     <form th:object="${transactionData}" th:action="@{/order}" method="post">
-                        <input type="number" th:field="*{product.product_id}" hidden>
+                        <input type="number" name="product_id" th:field="${productData.product_id}" hidden>
                         <div class="form-floating mb-3">
                             <input th:field="*{customer_name}" type="text" class="form-control" id="floatingName" placeholder="Adi Adnyana" required>
                             <label for="floatingName">Fullname *</label>
