@@ -168,47 +168,52 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="">
-                        <input type="number" id="price" hidden th:field="*{productData.price}">
+                    <input type="number" id="price" hidden th:field="*{productData.price}">
+                    <form th:object="${transactionData}" th:action="@{/order}" method="post">
+                        <input type="number" th:field="*{product.product_id}" hidden>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingName" placeholder="Adi Adnyana" required>
+                            <input th:field="*{customer_name}" type="text" class="form-control" id="floatingName" placeholder="Adi Adnyana" required>
                             <label for="floatingName">Fullname *</label>
+                            <span th:if="${#fields.hasErrors('customer_name')}" th:errors="*{customer_name}" class="text-danger">Name Error</span>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingEmail" placeholder="adiadnyana22@gmail.com" required>
+                            <input th:field="*{email}" type="email" class="form-control" id="floatingEmail" placeholder="adiadnyana22@gmail.com" required>
                             <label for="floatingEmail">Email *</label>
+                            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger">Email Error</span>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingPhone" placeholder="+6281246868369" required>
+                            <input th:field="*{phone_number}" type="text" class="form-control" id="floatingPhone" placeholder="+6281246868369" required>
                             <label for="floatingPhone">Phone Number *</label>
+                            <span th:if="${#fields.hasErrors('phone_number')}" th:errors="*{phone_number}" class="text-danger">Phone Number Error</span>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingAddress" placeholder="Jl. Diponegoro No. 39 Pedungan" required>
+                            <input th:field="*{address}" type="text" class="form-control" id="floatingAddress" placeholder="Jl. Diponegoro No. 39 Pedungan" required>
                             <label for="floatingAddress">Address *</label>
+                            <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="text-danger">Address Error</span>
                         </div>
                         <div class="form-floating mb-3">
-                            <textarea class="form-control" placeholder="Leave a description here" id="floatingDescription" style="height: 100px"></textarea>
+                            <textarea th:field="*{description}" class="form-control" placeholder="Leave a description here" id="floatingDescription" style="height: 100px"></textarea>
                             <label for="floatingDescription">Description</label>
                         </div>
                         <div class="row">
                             <div class="col-3">
                                 <div class="form-floating mb-3">
-                                    <input type="number" class="form-control" id="floatingQuantity" placeholder="1" min="1" value="1">
+                                    <input name="quantity" type="number" class="form-control" id="floatingQuantity" placeholder="1" min="1" value="1">
                                     <label for="floatingQuantity">Quantity</label>
                                 </div>
                             </div>
                             <div class="col-9">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingTotal" placeholder="1000" disabled th:field="*{productData.price}">
+                                    <input th:field="*{total_price}" type="text" class="form-control" id="floatingTotal" placeholder="1000" disabled>
                                     <label for="floatingTotal">Total Price</label>
                                 </div>
                             </div>
                         </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-onfashion">Place Order</button>
+                        </div>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a th:href="@{/}"><button type="button" class="btn btn-onfashion">Place Order</button></a>
                 </div>
             </div>
         </div>
@@ -227,6 +232,7 @@
         const quantity = document.querySelector("#floatingQuantity");
         const total = document.querySelector("#floatingTotal");
         const price = document.querySelector("#price");
+        total.value = `${quantity.value * price.value}`;
         quantity.addEventListener('change', () => {
             total.value = `${quantity.value * price.value}`;
         })

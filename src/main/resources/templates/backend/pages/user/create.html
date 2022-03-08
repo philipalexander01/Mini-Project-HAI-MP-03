@@ -20,7 +20,7 @@
       <div class="content">
         <div class="">
           <h3>Add User</h3>
-          <form th:object="${userData}" th:action="@{/admin/user/store}" method="post">
+          <form th:object="${userData}" th:action="@{/order}" method="post">
             <div class="form-group mt-2">
               <label for="name">Full Name</label>
               <input th:field="*{fullname}" type="text" class="form-control" id="fullname"
