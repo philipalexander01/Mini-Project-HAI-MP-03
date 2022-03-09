@@ -11,7 +11,7 @@
 	<groupId>com.haimp03</groupId>
 	<artifactId>onfashion</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>onfashion</name>
 	<description>Mini Project HAI BCA HAI MP 03</description>
 	<properties>

@@ -82,6 +82,7 @@ body {
 .main {
     flex-grow: 1;
     padding: 2rem;
+    width: calc(100vw - 300px);
 }
 
 .navbar {
@@ -182,6 +183,7 @@ nav .navbar {
 
     .main {
         padding: 1rem;
+        width: 100%;
     }
 
     .main .navbar {

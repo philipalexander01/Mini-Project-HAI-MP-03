@@ -42,4 +42,8 @@ public class ProductService {
     public void update(Product product) {
         productRepository.save(product);
     }
+    
+    public void updateStockProduct(Integer stock, Long productId) {
+        productRepository.updateStockProduct(stock, productId);
+    }
 }
