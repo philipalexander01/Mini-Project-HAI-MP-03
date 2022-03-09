@@ -1,5 +1,7 @@
 package com.haimp03.onfashion.service;
 
+import java.util.Optional;
+
 import com.haimp03.onfashion.entity.Transaction;
 import com.haimp03.onfashion.repository.TransactionRepository;
 
@@ -13,6 +15,10 @@ public class TransactionService {
 
     public Iterable<Transaction> findAll(){
         return transactionRepository.findAll();
+    }
+
+    public Optional<Transaction>findById(Long id){
+        return transactionRepository.findById(id);
     }
 
     public void updateTransactionStatus(Long id, String status){
