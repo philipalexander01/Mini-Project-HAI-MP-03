@@ -88,7 +88,7 @@
             <div class="container">
                 <div th:if="${not #lists.isEmpty(productCategory1) and not #lists.isEmpty(productCategory2)}">
                     <div class="judul">
-                        <h3>On <strong>Outfit</strong></h3>
+                        <h3>On <strong>Products</strong></h3>
                         <h1 th:text="${productCategory1[0].category_name} + ' & ' + ${productCategory2[0].category_name}">Men & Women Outfit</h1>
                     </div>
                     <div class="row">
@@ -252,7 +252,7 @@
             <div class="container">
                 <div th:if="${not #lists.isEmpty(productCategory3)}">
                     <div class="judul">
-                        <h3>On <strong>Accessories</strong></h3>
+                        <h3>On <strong>Recommendation</strong></h3>
                         <h1 th:text="${productCategory3[0].category_name}">Accessories</h1>
                     </div>
                     <div class="row">
