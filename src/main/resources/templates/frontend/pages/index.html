@@ -29,10 +29,10 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-    <div th:replace="/frontend/fragments/sweetalert::sweetalert2"></div>
+    <div th:replace="frontend/fragments/sweetalert::sweetalert2"></div>
 
     <div class="wrapper">
-        <div th:replace="/frontend/fragments/navbar::navbar"></div>
+        <div th:replace="frontend/fragments/navbar::navbar"></div>
         <section class="bg-banner">
             <div class="banner">
                 <img src="/frontend/images/banner.jpg" alt="" class="img-desktop">
@@ -110,60 +110,6 @@
                                 </div>
                             </a>
                         </div>
-                        <!-- <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                            <a href="/product/2">
-                                <div class="produk">
-                                    <img src="/frontend/images/products/product2.jpg" alt="">
-                                    <div class="text-produk">
-                                        <div class="tombol">
-                                            <i class="far fa-heart"></i>
-                                            <i class="fas fa-shopping-bag"></i>
-                                        </div>
-                                        <h3>$ 49.99</h3>
-                                        <h2>Parka Jacket</h2>
-                                        <div class="star">
-                                            <img src="/frontend/images/star.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                            <a href="/product/2">
-                                <div class="produk">
-                                    <img src="/frontend/images/products/product3.jpg" alt="">
-                                    <div class="text-produk">
-                                        <div class="tombol">
-                                            <i class="far fa-heart"></i>
-                                            <i class="fas fa-shopping-bag"></i>
-                                        </div>
-                                        <h3>$ 19.99</h3>
-                                        <h2>Basic Hoodie</h2>
-                                        <div class="star">
-                                            <img src="/frontend/images/star.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                            <a href="/product/2">
-                                <div class="produk">
-                                    <img src="/frontend/images/products/product4.jpg" alt="">
-                                    <div class="text-produk">
-                                        <div class="tombol">
-                                            <i class="far fa-heart"></i>
-                                            <i class="fas fa-shopping-bag"></i>
-                                        </div>
-                                        <h3>$ 35.99</h3>
-                                        <h2>Classic Pea Coat</h2>
-                                        <div class="star">
-                                            <img src="/frontend/images/star.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div> -->
                         <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12"  th:each="product : ${productCategory2}">
                             <a th:href="@{/product/} + ${product.product_id}">
                                 <div class="produk">
@@ -182,69 +128,12 @@
                                 </div>
                             </a>
                         </div>
-                        <!-- <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                            <a href="/product/2">
-                                <div class="produk">
-                                    <img src="/frontend/images/products/product6.jpg" alt="">
-                                    <div class="text-produk">
-                                        <div class="tombol">
-                                            <i class="far fa-heart"></i>
-                                            <i class="fas fa-shopping-bag"></i>
-                                        </div>
-                                        <h3>$ 39.99</h3>
-                                        <h2>Gathered Sweatshirt</h2>
-                                        <div class="star">
-                                            <img src="/frontend/images/star.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                            <a href="/product/2">
-                                <div class="produk">
-                                    <img src="/frontend/images/products/product7.jpg" alt="">
-                                    <div class="text-produk">
-                                        <div class="tombol">
-                                            <i class="far fa-heart"></i>
-                                            <i class="fas fa-shopping-bag"></i>
-                                        </div>
-                                        <h3>$ 31.99</h3>
-                                        <h2>Cropped Sweatshirt</h2>
-                                        <div class="star">
-                                            <img src="/frontend/images/star.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                            <a href="/product/2">
-                                <div class="produk">
-                                    <img src="/frontend/images/products/product8.jpg" alt="">
-                                    <div class="text-produk">
-                                        <div class="tombol">
-                                            <i class="far fa-heart"></i>
-                                            <i class="fas fa-shopping-bag"></i>
-                                        </div>
-                                        <h3>$ 32.99</h3>
-                                        <h2>Embroidered Sweatshirt</h2>
-                                        <div class="star">
-                                            <img src="/frontend/images/star.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div> -->
                     </div>
                 </div>
 
                 <div th:if="${#lists.isEmpty(productCategory1) or #lists.isEmpty(productCategory2)}">
                     <h1 class="text-center">Products Not Available</h1>
                 </div>
-
-
-
                 
             </div>
         </section>
@@ -322,7 +211,7 @@
                 </div>
             </div>
         </section>
-        <div th:replace="/frontend/fragments/footer::footer"></div>
+        <div th:replace="frontend/fragments/footer::footer"></div>
     </div>
 </body>
 </html>
