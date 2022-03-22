@@ -31,7 +31,7 @@ public class DashboardController {
     public String index(Model model) {
         model.addAttribute("weatherData", restWeather.getCurrentWeather());
         model.addAttribute("totalTodayTransaction", dashboardService.getTotalTodayTransaction()!= null?dashboardService.getTotalTodayTransaction():0);
-        model.addAttribute("totalThisMonthTransaction", dashboardService.getTotalThisMonthTransaction());
+        model.addAttribute("totalThisMonthTransaction", dashboardService.getTotalThisMonthTransaction()!=null?dashboardService.getTotalThisMonthTransaction():0);
         model.addAttribute("totalCategory", dashboardService.getTotalCategory());
         model.addAttribute("totalProduct", dashboardService.getTotalProduct());
         return "backend/pages/dashboard/index";
