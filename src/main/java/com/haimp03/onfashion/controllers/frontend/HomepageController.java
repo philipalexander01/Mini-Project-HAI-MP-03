@@ -1,13 +1,21 @@
 package com.haimp03.onfashion.controllers.frontend;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import javax.validation.Valid;
+
 import com.haimp03.onfashion.dto.FrontendInterface;
 import com.haimp03.onfashion.dto.TransactionData;
 import com.haimp03.onfashion.entity.Product;
 import com.haimp03.onfashion.entity.Transaction;
+import com.haimp03.onfashion.service.EmailSenderService;
 import com.haimp03.onfashion.service.ProductService;
 import com.haimp03.onfashion.service.TransactionService;
-
-import net.bytebuddy.utility.RandomString;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +29,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import javax.validation.Valid;
+import net.bytebuddy.utility.RandomString;
 
 @Controller
 @RequestMapping("")
@@ -42,6 +43,9 @@ public class HomepageController {
 
     @Autowired
     ModelMapper modelMapper;
+
+    @Autowired
+    EmailSenderService mailSender;
     
     @GetMapping
     public String homepage(Model model) {
@@ -110,6 +114,15 @@ public class HomepageController {
                 transactionData.setTotal_price(transactionData.getQuantity()* product.getPrice());
                 transactionData.setProduct(product);
                 transactionService.addTransaction(modelMapper.map(transactionData, Transaction.class));
+                String subject = "Order Confirmation #" + transactionData.getCode();
+                String emailBody = "Hello, "+ transactionData.getCustomer_name() +"! \nYour order has been successfully made. Thank you for shopping at our store!\n\nThese are the detail of your order :\n" +
+                "Transaction Code : " + transactionData.getCode() + "\n" +
+                "Item Name : " + transactionData.getProduct().getName() + "\n" +
+                "Quantity : " +transactionData.getQuantity() + "\n" +
+                "Total Price : $" + transactionData.getTotal_price() + "\n" +
+                "Please make a payment for your order to this account : 7221 8273 1382 888 (BCA - Onfashion Store). \nWe will process you order further after your payment is confirmed";
+
+                mailSender.sendEmail(transactionData.getEmail(), subject, emailBody);
             }
             redirectAttributes.addFlashAttribute("successMessage","Successfully Add New Transaction");
         } catch (Exception ex) {
