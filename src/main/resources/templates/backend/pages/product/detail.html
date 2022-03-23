@@ -25,7 +25,7 @@
             </div>
             <div class="col-md-8 mt-1">
                 <h2 th:text="${productData.name} +' ~ '+ ${productData.code}"></h2>
-                <h4 th:text="'$ ' + ${productData.price}"></h4>
+                <h4 th:text="'Rp ' + ${productData.price}" id="harga"></h4>
                 <h6 th:text="'Stock : ' + ${productData.stock}"></h6>
                 <h6 th:text="'Category : ' + ${productData.category.name}"></h6>
                 <h5 class="mt-5">Description :</h5>
@@ -45,6 +45,11 @@
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+  <script>
+    document.querySelectorAll("#harga").forEach((produk) => {
+        produk.innerHTML = (produk.innerHTML.toString() + "0").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    })
+  </script>
 
 </body>
 
