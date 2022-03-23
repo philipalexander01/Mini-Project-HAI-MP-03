@@ -27,7 +27,7 @@ public interface DashboardRepository extends CrudRepository<Transaction, Long> {
     @Query(value = "SELECT COUNT(product_id) as totalproduct FROM products", nativeQuery = true)
     public Integer getTotalProduct();
     
-    @Query(value = "SELECT SUM(total_price) as totalSalePerDay, SUBSTRING(created_at, 9, 2) AS day FROM transactions WHERE MONTH(created_at) = MONTH(CURRENT_DATE()) AND YEAR(created_at) = YEAR(CURRENT_DATE())GROUP BY day ORDER BY created_at", nativeQuery = true)
+    @Query(value = "SELECT SUM(total_price) as totalSalePerDay, SUBSTRING(created_at, 9, 2) AS day FROM transactions WHERE MONTH(created_at) = MONTH(CURRENT_DATE()) AND YEAR(created_at) = YEAR(CURRENT_DATE()) GROUP BY day ORDER BY day ASC", nativeQuery = true)
     public List<SalesPerDayInOneMonthData> getCurrentMonthTransaction();
     
     @Query(value = "SELECT SUM(t.quantity) as totalSaleProduct, p.name FROM transactions as t JOIN products as p ON p.product_id = t.product_id WHERE created_at BETWEEN DATE_FORMAT(NOW() ,'%Y-%m-01') AND CONCAT(CURRENT_DATE()+interval 3 month,' 23:59:59.993') GROUP BY t.product_id ORDER BY totalSaleProduct ASC LIMIT 3", nativeQuery = true)

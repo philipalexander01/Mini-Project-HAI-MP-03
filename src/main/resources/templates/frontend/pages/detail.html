@@ -43,7 +43,7 @@
                                         <img src="/frontend/images/star.png" alt="">
                                     </div>
                                     <hr>
-                                    <h3 th:text="'$ ' + ${productData.price}">$ 19.99</h3>
+                                    <h3 th:text="'Rp. ' + ${productData.price}">Rp. 300,000.00</h3>
                                 </div>
                                 <div class="deskripsi">
                                     <span>
@@ -145,7 +145,7 @@
                                         <i class="far fa-heart"></i>
                                         <i class="fas fa-shopping-bag"></i>
                                     </div>
-                                    <h3 th:text="'$ ' + ${product.price}">$ 39.99</h3>
+                                    <h3 th:text="'Rp. ' + ${product.price}">Rp. 300,000.00</h3>
                                     <h2 th:text="${product.name}">Gathered Sweatshirt</h2>
                                     <div class="star">
                                         <img src="/frontend/images/star.png" alt="">
@@ -161,10 +161,10 @@
     </div>
 
     <div class="modal fade" id="transactionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="transactionModal" th:text="'Order Form for ' + ${productData.name} + ' ($' + ${productData.price} + ')'">Modal title</h5>
+                    <h5 class="modal-title" id="transactionModal" th:text="'Order Form for ' + ${productData.name} + ' (Rp. ' + ${productData.price}">Modal title</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -235,6 +235,19 @@
         total.value = `${quantity.value * price.value}`;
         quantity.addEventListener('change', () => {
             total.value = `${quantity.value * price.value}`;
+        })
+    </script>
+    <script>
+        document.querySelectorAll(".text-produk > h3").forEach((produk) => {
+            produk.innerHTML = (produk.innerHTML.toString() + "0").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        })
+
+        document.querySelectorAll(".harga > h3").forEach((produk) => {
+            produk.innerHTML = (produk.innerHTML.toString() + "0").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        })
+
+        document.querySelectorAll(".modal-header > h5").forEach((produk) => {
+            produk.innerHTML = (produk.innerHTML.toString() + "0)").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         })
     </script>
 </body>

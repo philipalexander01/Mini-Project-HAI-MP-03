@@ -119,7 +119,7 @@ public class HomepageController {
                 "Transaction Code : " + transactionData.getCode() + "\n" +
                 "Item Name : " + transactionData.getProduct().getName() + "\n" +
                 "Quantity : " +transactionData.getQuantity() + "\n" +
-                "Total Price : $" + transactionData.getTotal_price() + "\n" +
+                "Total Price : Rp. " + transactionData.getTotal_price() + "\n" +
                 "Please make a payment for your order to this account : 7221 8273 1382 888 (BCA - Onfashion Store). \nWe will process you order further after your payment is confirmed";
 
                 mailSender.sendEmail(transactionData.getEmail(), subject, emailBody);
